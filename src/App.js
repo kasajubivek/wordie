@@ -28,7 +28,7 @@ function App() {
       }
     };
     
-    if(myRef.current == false){
+    if(myRef.current === false){
       myRef.current = true;
       fetchWord();
     }
@@ -47,7 +47,7 @@ function App() {
       if(userGuess.length <= 5){
         setGuesses(updatedGuessList);
         if (typeof userGuess === 'string' && typeof magicWord === 'string') {
-          if(userGuess.toLowerCase() == magicWord.toLowerCase()){
+          if(userGuess.toLowerCase() === magicWord.toLowerCase()){
             setTimeout(() => {
               setIsGameOver(true);
               alert('Yayyyy, you got it!');
@@ -59,7 +59,7 @@ function App() {
       if(userGuess.length >= 5){
         for(let i=0; i<userGuess.length;i++){
           const updatedColors = [...colors];
-          if(userGuess[i] == magicWord[i]){
+          if(userGuess[i] === magicWord[i]){
             updatedColors[index][i] = "#49ed49";
             setColors(updatedColors);
             console.log("Green: "+userGuess[i]);
@@ -84,7 +84,7 @@ function App() {
       const key = event.key.toLowerCase();
       if (key === "backspace") {
         setUserGuess((prevGuess) => prevGuess.slice(0, -1));
-      } else if (/[a-z]/i.test(key) && key.length == 1) {
+      } else if (/[a-z]/i.test(key) && key.length === 1) {
         setUserGuess((userGuess) => userGuess + key);
       }
     }
@@ -103,7 +103,7 @@ function App() {
 
   return (
     <div className='board'>
-      <h1>Wordle Game</h1>
+      <h1>Wordie</h1>
       {guesses.map((guess, index) => {
         return <Line guess={guess} colors={colors[index]}/>
       })
